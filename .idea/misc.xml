@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/micha/AndroidStudioProjects/FantasticShop/FantasticShop/app/src/main/res/layout/activity_main.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/drawable/ic_baseline_shopping_black_cart_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/drawable/ic_shopping_cart_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/layout/activity_user_create_account.xml" value="0.25" />
+        <entry key="..\:/Users/sango/AndroidStudioProjects/fantasticShopProject/app/src/main/res/layout/activity_user_login.xml" value="0.264" />
       </map>
     </option>
   </component>
