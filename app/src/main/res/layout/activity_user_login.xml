@@ -77,10 +77,10 @@
         android:layout_below="@id/userLogin_btn_id"
         android:layout_marginTop="120dp"
         android:backgroundTint="@color/white"
-        android:text="@string/create_account"
-        android:textColor="@color/black"
+        android:onClick="onCreateAccount"
         android:shadowRadius="@integer/material_motion_duration_long_1"
-        />
+        android:text="@string/create_account"
+        android:textColor="@color/black" />
 
 
 </RelativeLayout>
