@@ -2,10 +2,13 @@ package com.example.fantasticshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class UserLoginActivity extends AppCompatActivity {
     private EditText emailId;
@@ -33,10 +36,12 @@ public class UserLoginActivity extends AppCompatActivity {
             System.out.println("Login successful");
 
             // Once logged in, takes user to HomeActivity
+            Toast.makeText(getApplicationContext(), "Successfully logging in", Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         } else {
-            System.out.println("Can't login. Try again.");
+            Toast.makeText(getApplicationContext(), "Can't log in. Try again.", Toast.LENGTH_SHORT).show();
         }
     }
 
