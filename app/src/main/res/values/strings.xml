@@ -37,5 +37,9 @@
     <string name="item_detailsPage_sellerContact_txt">Contact the seller</string>
     <string name="item_detailsPage_share_item_txt">Share</string>
     <string name="userCreateAccount_user_name">User Name</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="shopping_cart_logo">Shopping cart logo</string>
+    <string name="description" />
 
 </resources>
