@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="onEnter"
         android:contentDescription="@string/description"
         android:src="@drawable/ic_shopping_cart_24" />
     <TextView
@@ -28,6 +27,16 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/yellow_page_slogan_title"
         style="@style/yellow_page_slogan_txt"
+        />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:progressBackgroundTint="@color/white"
+
         />
 
 
