@@ -1,100 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Your phone number"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="571dp" />
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin"
+    android:layout_margin="@dimen/default_margin">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/app_name_id"
+        style="@style/defaultTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="54dp"
+        android:text="@string/app_name" />
+    <TextView
+        android:id="@+id/item_page_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name_id"
         android:text="Add Item"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="@dimen/default_margin"
+        style="@style/pageTitleTextStyle" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="422dp"
-        android:layout_height="185dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        tools:layout_editor_absoluteY="106dp" />
+        android:id="@+id/add_image_id"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/item_page_id"
+        android:layout_marginTop="@dimen/default_margin"
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/ic_launcher_foreground" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="Upload Image"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="291dp" />
+        android:id="@+id/upload_btn_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_image_id"
+        android:layout_marginTop="10dp"
+        android:text="Upload"
+        android:backgroundTint="@color/black"
+        />
+    <EditText
+        android:id="@+id/item_name_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upload_btn_id"
+        android:layout_marginTop="@dimen/default_margin"
+        android:hint="Your Item name"
+
+        />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Item name"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="347dp" />
-
+        android:id="@+id/item_desc_id"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/item_name_id"
+        android:layout_marginTop="@dimen/default_margin"
+        android:hint="Your Item name"
+        android:inputType="textLongMessage"
+        />
     <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Item category"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="451dp" />
-
+        android:id="@+id/item_category_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_desc_id"
+        android:layout_marginTop="@dimen/default_margin"
+        android:hint="Your Item category"
+        />
     <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Item price"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="509dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:text="Enter item description here"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="397dp" />
-
+        android:id="@+id/item_price_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_category_id"
+        android:layout_marginTop="@dimen/default_margin"
+        android:hint="Your Item price - $"
+        />
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/ok_btn_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/item_price_id"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/black"
         android:text="OK"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="626dp" />
+        android:layout_marginLeft="50dp"
 
+        />
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cancel_btn_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/item_price_id"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/black"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="242dp"
-        tools:layout_editor_absoluteY="626dp" />
+        android:layout_marginLeft="200dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+
+
+</RelativeLayout>

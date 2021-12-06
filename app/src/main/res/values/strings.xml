@@ -33,7 +33,7 @@
     <string name="item_detailsPage_item_name">@string/homePage_item_name</string>
     <string name="item_detailsPage_item_category">Electronics</string>
     <string name="item_detailsPage_item_price">@string/homePage_item_price</string>
-    <string name="item_detailsPage_item_description">Enter item description here</string>
+    <string name="item_detailsPage_item_description">Enter item description here Enter item description here Enter item description here Enter item description here Enter item description here</string>
     <string name="item_detailsPage_sellerContact_txt">Contact the seller</string>
     <string name="item_detailsPage_share_item_txt">Share</string>
     <string name="userCreateAccount_user_name">User Name</string>

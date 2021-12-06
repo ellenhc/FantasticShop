@@ -62,13 +62,13 @@
 
     <!-- This is the item name font size -->
     <style name="itemNameTextStyle" parent="pageTitleTextStyle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">12sp</item>
 
     </style>
 
     <!-- This is the item price font size -->
     <style name="itemPriceTextStyle" parent="pageTitleTextStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/red</item>
 
     </style>
@@ -76,6 +76,25 @@
     <!-- This is the item description font size -->
     <style name="itemDescTextStyle" parent="defaultTextStyle">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- This is the item small description font size -->
+    <style name="itemSmallDescStyle">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="itemSmallNameStyle" parent="defaultTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/darkGray</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="itemSmallPriceStyle" parent="defaultTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
     </style>
 
     <!-- Yellow main page-->
