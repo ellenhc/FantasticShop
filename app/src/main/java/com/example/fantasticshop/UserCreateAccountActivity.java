@@ -29,9 +29,8 @@ public class UserCreateAccountActivity extends AppCompatActivity {
             "(?=.*[0-9])"  +
             "(?=.*[a-z])" +
             "(?=.*[A-Z])" +
-            "(?=.*[@#$%^&+=])"  +  // at least 1 special character
-            "(?=\\S+$)"  +  // no white space
-            ".{6,}" +       // at least one 6 characters
+            "(?=.*[@#$!%*?^&+=])"  +  // at least 1 special character
+            "([0-9a-zA-Z@#$!%*?^&+=]{6,})"  +  // no white space and at least 6 characters
             "$";
 
 
