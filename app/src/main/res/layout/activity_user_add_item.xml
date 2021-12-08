@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_margin"
-    android:layout_margin="@dimen/default_margin">
+    android:layout_margin="@dimen/default_margin"
+    tools:context=".UserAddItemActivity">
 
     <TextView
         android:id="@+id/app_name_id"
@@ -31,7 +33,7 @@
         android:src="@drawable/ic_launcher_foreground" />
 
     <Button
-        android:id="@+id/upload_btn_id"
+        android:id="@+id/btn_upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/add_image_id"
@@ -40,45 +42,45 @@
         android:backgroundTint="@color/black"
         />
     <EditText
-        android:id="@+id/item_name_id"
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/upload_btn_id"
+        android:layout_below="@id/btn_upload"
         android:layout_marginTop="@dimen/default_margin"
         android:hint="Your Item name"
 
         />
 
     <EditText
-        android:id="@+id/item_desc_id"
+        android:id="@+id/item_desc"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@id/item_name_id"
+        android:layout_below="@id/item_name"
         android:layout_marginTop="@dimen/default_margin"
         android:hint="Your Item name"
         android:inputType="textLongMessage"
         />
     <EditText
-        android:id="@+id/item_category_id"
+        android:id="@+id/item_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_desc_id"
+        android:layout_below="@id/item_desc"
         android:layout_marginTop="@dimen/default_margin"
         android:hint="Your Item category"
         />
     <EditText
-        android:id="@+id/item_price_id"
+        android:id="@+id/item_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_category_id"
+        android:layout_below="@+id/item_category"
         android:layout_marginTop="@dimen/default_margin"
         android:hint="Your Item price - $"
         />
     <Button
-        android:id="@+id/ok_btn_id"
+        android:id="@+id/btn_okay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_price_id"
+        android:layout_below="@id/item_price"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/black"
         android:text="OK"
@@ -86,10 +88,10 @@
 
         />
     <Button
-        android:id="@+id/cancel_btn_id"
+        android:id="@+id/cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_price_id"
+        android:layout_below="@id/item_price"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/black"
         android:text="Cancel"
