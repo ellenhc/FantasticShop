@@ -2,6 +2,9 @@ package com.example.fantasticshop;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +17,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements CallBackInterface{
 
+    private Button btn_add_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,21 @@ public class HomeActivity extends AppCompatActivity implements CallBackInterface
         //Let's load the itemRepository
         ItemRepository repo = new ItemRepository();
 
-//         Let's now update it
+        //Let's now update it
         repo.updateData();
 
         repo.setCallBackInterface(this);
 
+        initViews();
+
+        // adding function to the add item button
+        btn_add_item.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "You are adding a new item", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void fragmentInjection() {
@@ -46,5 +60,11 @@ public class HomeActivity extends AppCompatActivity implements CallBackInterface
         //fragmentInjection;
         fragmentInjection();
     }
+
+    private void initViews() {
+        btn_add_item = findViewById(R.id.btn_add_item);
+    }
+
+
 
 }
