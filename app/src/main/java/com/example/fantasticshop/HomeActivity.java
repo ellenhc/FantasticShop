@@ -1,7 +1,5 @@
 package com.example.fantasticshop;
 
-import static com.example.fantasticshop.ItemRepository.updateData;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,35 +7,44 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.fantasticshop.fragments.HomeFragment;
+import com.example.fantasticshop.fragments.HorizontalItems;
+
+import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity implements CallBackInterface{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        // Let's now update it
-        updateData();
 
         //Let's load the itemRepository
-        ItemRepository repo = new ItemRepository(this);
+        ItemRepository repo = new ItemRepository();
 
-        {
-            //Fragment injection into the home page
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container_id, new HomeFragment());
-        transaction.addToBackStack(null);
-        transaction.commit();
-        }
+//         Let's now update it
+        repo.updateData();
 
         repo.setCallBackInterface(this);
 
     }
 
-    @Override
-    public void updateItemList(String msg) {
-        Log.i("CALLBACK'S", "my data: " + msg);
-
+    private void fragmentInjection() {
+        Log.i("CALLBACK'S", "Fragment loading...: ");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_id, new HomeFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
+
+
+    @Override
+    public void displayItemList(List<HorizontalItems> dataList) {
+        Log.i("CALLBACK'S", "my dataList: " + dataList);
+
+        //fragmentInjection;
+        fragmentInjection();
+    }
+
 }

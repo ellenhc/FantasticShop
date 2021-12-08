@@ -9,14 +9,13 @@ import java.util.List;
 
 public class SingletonClass {
     private static SingletonClass myInstance = null;
-    private final List<HorizontalItems> itemList;
-    private FirebaseDatabase database;
+    private  List<HorizontalItems> itemList;
     private final DatabaseReference reference;
 
 
     private SingletonClass() {
         itemList = new ArrayList<>();
-        database = FirebaseDatabase.getInstance("https://fantasticshop-9cd2b-default-rtdb.firebaseio.com/");
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://fantasticshop-9cd2b-default-rtdb.firebaseio.com/");
         reference = database.getReference("items");
     }
 

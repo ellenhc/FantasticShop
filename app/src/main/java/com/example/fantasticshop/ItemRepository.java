@@ -2,8 +2,16 @@ package com.example.fantasticshop;
 
 import static com.example.fantasticshop.SingletonClass.getMyInstance;
 
-import androidx.annotation.NonNull;
+import android.content.Context;
+import android.database.DataSetObserver;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fantasticshop.adapter.ItemAdapter;
 import com.example.fantasticshop.fragments.HorizontalItems;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,31 +21,32 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 public class ItemRepository{
+    Context context;
 
-    static CallBackInterface callBackInterface;
+    CallBackInterface callBackInterface;
 
-    public ItemRepository(CallBackInterface callBackInterface) {
-        ItemRepository.callBackInterface = callBackInterface;
+    public ItemRepository() {
+
     }
 
     public void setCallBackInterface(CallBackInterface callBackInterface) {
-        ItemRepository.callBackInterface = callBackInterface;
+        this.callBackInterface = callBackInterface;
     }
 
     // Let's connect our items database reference
 
-    static final DatabaseReference myDataBaseRef = getMyInstance().getReference();
+    DatabaseReference myDataBaseRef = getMyInstance().getReference();
 
     // we are now going to create a singleton list containing all our items
-    static List<HorizontalItems> itemList = getMyInstance().getItemList();
+    List<HorizontalItems> itemList = getMyInstance().getItemList();
+
     // we are now going to update the database to the items list
-
-
-    static void updateData(){
+    public void updateData(){
 
         myDataBaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //empty the itemList before data loading
                 itemList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     HorizontalItems item = ds.getValue(HorizontalItems.class);
@@ -45,10 +54,9 @@ public class ItemRepository{
                     if(item != null){
                         itemList.add(item);
                     }
-
                 }
-
-                callBackInterface.updateItemList("Callback done");
+//                callback called
+                callBackInterface.displayItemList(itemList);
 
             }
 
@@ -58,9 +66,15 @@ public class ItemRepository{
             }
         });
 
+    }
 
+    // we now update the item on the database
+    public void updateItem(HorizontalItems item){
+        //we get the child from the database by it id and then set it
+        myDataBaseRef.child(item.getId()).setValue(item);
 
-                }
+    }
+
 
 
 }

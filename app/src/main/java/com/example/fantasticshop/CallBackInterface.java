@@ -1,5 +1,10 @@
 package com.example.fantasticshop;
 
+import com.example.fantasticshop.fragments.HorizontalItems;
+
+import java.util.List;
+
+// callback interface
 public interface CallBackInterface {
-    void updateItemList(String msg);
+    void displayItemList(List<HorizontalItems> dataList);
 }

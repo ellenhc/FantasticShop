@@ -1,6 +1,7 @@
 package com.example.fantasticshop.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.fantasticshop.ItemDetailsActivity;
+import com.example.fantasticshop.ItemRepository;
 import com.example.fantasticshop.R;
 import com.example.fantasticshop.fragments.HorizontalItems;
 
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
+
     Context context;
     List<HorizontalItems> itemsList;
     Integer layoutId;
@@ -29,6 +34,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         this.layoutId = layoutId;
     }
 
+
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,7 +44,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+
         HorizontalItems currentItem = itemsList.get(position);
+
+        // we create an instance of the itemRepository
+        ItemRepository repository = new ItemRepository();
+
         Glide.with(context).load(Uri.parse(currentItem.getImageUrl())).into(holder.itemImage);
         holder.itemName.setText(currentItem.getName());
         holder.itemPrice.setText(currentItem.getPrice());
@@ -51,6 +62,30 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             holder.starIcon.setImageResource(R.drawable.ic_star_unlike);
         }
 
+        // let us set the liked star interaction
+        holder.starIcon.setOnClickListener(v -> {
+            currentItem.setLiked(!(currentItem.getLiked()));
+
+            // we now update the item in the recyclerview
+            repository.updateItem(currentItem);
+        });
+
+        // when a user click on an itemView
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ItemDetailsActivity.class);
+//                intent.putExtra("item_uri", Uri.parse(currentItem.getImageUrl()));
+                intent.putExtra("image", currentItem.getImageUrl());
+                intent.putExtra("name", currentItem.getName());
+                intent.putExtra("price", currentItem.getPrice());
+                intent.putExtra("desc", currentItem.getDescription());
+                intent.putExtra("liked", currentItem.getLiked());
+
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -73,4 +108,5 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             starIcon = itemView.findViewById(R.id.unlike_id);
         }
     }
+
 }

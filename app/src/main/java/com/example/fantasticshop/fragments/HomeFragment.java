@@ -1,6 +1,8 @@
 package com.example.fantasticshop.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +17,24 @@ import com.example.fantasticshop.R;
 import com.example.fantasticshop.SingletonClass;
 import com.example.fantasticshop.adapter.ItemAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView, recyclerView2;
     ItemAdapter itemAdapter, verticalItemAdapter;
-    List<HorizontalItems> itemsList = SingletonClass.getMyInstance().getItemList();
+    List<HorizontalItems> itemsList;
 
+    public HomeFragment() {
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_home, container, false);
 
-
         recyclerView = viewRoot.findViewById(R.id.horizontal_recyclerview_id);
         recyclerView2 = viewRoot.findViewById(R.id.verticalRecyclerView_id);
-//        itemsList = new ArrayList<>();
+        itemsList = SingletonClass.getMyInstance().getItemList();
 
         setItemRecycler(itemsList);
 
@@ -40,6 +42,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setItemRecycler(List<HorizontalItems> dataList){
+        Log.i("CALLBACK'S", "RecyclerView setting... ");
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         itemAdapter = new ItemAdapter(getContext(), dataList, R.layout.horizontal_item_layout);
@@ -48,6 +51,23 @@ public class HomeFragment extends Fragment {
         recyclerView2.setAdapter(verticalItemAdapter);
     }
 
-
-
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onStart() {
+        super.onStart();
+        setItemRecycler(itemsList);
+        itemAdapter.notifyDataSetChanged();
+        verticalItemAdapter.notifyDataSetChanged();
+        Log.i("CALLBACK'S", "data updated... ");
+    }
+    //    @SuppressLint("NotifyDataSetChanged")
+//    @Override
+//    public void displayItemList(List<HorizontalItems> dataList) {
+//
+//        setItemRecycler(dataList);
+//        itemAdapter.notifyDataSetChanged();
+//        verticalItemAdapter.notifyDataSetChanged();
+//        Log.i("CALLBACK'S", "data updated... ");
+//
+//    }
 }

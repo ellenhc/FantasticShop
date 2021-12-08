@@ -23,6 +23,12 @@
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
+    <style name="defaultSmallTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
     <style name="customizeTextStyle">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/yellowGold_light</item>
@@ -57,7 +63,6 @@
     <!-- This is the page title font size -->
     <style name="pageTitleTextStyle" parent="userLoginTitleStyle">
         <item name="android:textSize">22sp</item>
-
     </style>
 
     <!-- This is the item name font size -->
@@ -70,7 +75,11 @@
     <style name="itemPriceTextStyle" parent="pageTitleTextStyle">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/red</item>
-
+    </style>
+     <!-- This is the item price big font size -->
+    <style name="itemPriceBigFont" parent="userLoginTitleStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/red</item>
     </style>
 
     <!-- This is the item description font size -->
