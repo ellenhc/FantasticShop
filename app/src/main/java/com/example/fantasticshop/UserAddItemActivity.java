@@ -65,6 +65,17 @@ public class UserAddItemActivity extends AppCompatActivity {
         });
     }
 
+    private void initViews() {
+        imageView = (ImageView)findViewById(R.id.add_image_id);
+        btn_upload = (Button)findViewById(R.id.btn_upload);
+        item_name = findViewById(R.id.item_name);
+        item_desc = findViewById(R.id.item_desc);
+        item_category = findViewById(R.id.item_category);
+        item_price = findViewById(R.id.item_price);
+        btn_save = findViewById(R.id.btn_save);
+        cancel_btn = findViewById(R.id.cancel_btn);
+    }
+
     // Followed ImagePicker tutorial: https://www.tutorialspoint.com/how-to-pick-an-image-from-image-gallery-in-android
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -88,15 +99,5 @@ public class UserAddItemActivity extends AppCompatActivity {
         return !name.isEmpty() && !price.isEmpty();
     }
 
-    private void initViews() {
 
-        imageView = (ImageView)findViewById(R.id.add_image_id);
-        btn_upload = (Button)findViewById(R.id.btn_upload);
-        item_name = findViewById(R.id.item_name);
-        item_desc = findViewById(R.id.item_desc);
-        item_category = findViewById(R.id.item_category);
-        item_price = findViewById(R.id.item_price);
-        btn_save = findViewById(R.id.btn_save);
-        cancel_btn = findViewById(R.id.cancel_btn);
-    }
 }

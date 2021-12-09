@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,11 +39,8 @@ public class UserCreateAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_create_account);
-        userCreateAccount_name = findViewById(R.id.userCreateAccount_name_id);
-        userAccountEmail = findViewById(R.id.userCreateAccount_email_id);
-        userAccountPassword = findViewById(R.id.userCreateAccount_password_id);
-        userConfirmPassword = findViewById(R.id.userCreateAccount_confirm_password_id);
-        btnCreateAccount = findViewById(R.id.userLogin_btn_create_account_id);
+
+        initViews();
 
         btnCreateAccount.setOnClickListener(view -> {
             String user_name = userCreateAccount_name.getText().toString();
@@ -65,6 +63,14 @@ public class UserCreateAccountActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    private void initViews() {
+        userCreateAccount_name = findViewById(R.id.userCreateAccount_name_id);
+        userAccountEmail = findViewById(R.id.userCreateAccount_email_id);
+        userAccountPassword = findViewById(R.id.userCreateAccount_password_id);
+        userConfirmPassword = findViewById(R.id.userCreateAccount_confirm_password_id);
+        btnCreateAccount = findViewById(R.id.userLogin_btn_create_account_id);
     }
 
     public Boolean emailValidation(){
@@ -120,4 +126,6 @@ public class UserCreateAccountActivity extends AppCompatActivity {
             return 0;
         }
     }
+
+
 }
