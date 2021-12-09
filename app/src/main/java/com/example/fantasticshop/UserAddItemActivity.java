@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.fantasticshop.fragments.HorizontalItems;
+
 public class UserAddItemActivity extends AppCompatActivity {
 
     private EditText item_name, item_desc, item_category, item_price;
@@ -48,6 +50,9 @@ public class UserAddItemActivity extends AppCompatActivity {
             String item_price_string = item_price.getText().toString();
 
             if(isValid()){
+                HorizontalItems horizontalItems = new HorizontalItems("id",item_name_string "image_location", item_price_string, item_desc_string, true );
+                Toast.makeText(UserAddItemActivity.this, horizontalItems.toString(), Toast.LENGTH_SHORT).show();
+
                 SharedPreferences sharedPreferences = getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE);
                 SharedPreferences.Editor myEditor = sharedPreferences.edit();
 

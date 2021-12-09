@@ -21,7 +21,17 @@ public class HorizontalItems {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "HorizontalItems{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
+                ", liked=" + liked +
+                '}';
+    }
 
     public String getId() {
         return id;
