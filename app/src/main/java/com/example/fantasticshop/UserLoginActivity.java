@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +35,16 @@ public class UserLoginActivity extends AppCompatActivity {
         Button userLoginBtn = findViewById(R.id.userLogin_btn_id);
         Button userCreateNewAccount = findViewById(R.id.userLogin_createAccount_btn_id);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE);
+        String last_user_email = sharedPreferences.getString("lastEmail", null);
+        if (last_user_email != null) {
+            Log.e("Shopper","Got Default user email");
+            userLoginEmail_input.setText(last_user_email);
+        }
+        else Log.e("Shopper","Didn't get Default user email");
+
         userLoginBtn.setOnClickListener(v -> {
-            SharedPreferences sharedPreferences = getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE);
+            // SharedPreferences sharedPreferences = getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE);
             String user_name = sharedPreferences.getString("userName", null);
             String user_email = sharedPreferences.getString("email", null);
             String user_password = sharedPreferences.getString("password", null);
@@ -48,7 +57,9 @@ public class UserLoginActivity extends AppCompatActivity {
                 // create an intent telling android to go to HomeActivity
                 Intent intent = new Intent(UserLoginActivity.this, HomeActivity.class);
                 if (passwordValidation() && userLoginPassword.equalsIgnoreCase(user_password)) {
-
+                    SharedPreferences.Editor myEditor = sharedPreferences.edit();
+                    myEditor.putString("lastEmail", user_email);
+                    myEditor.apply();
                     Toast.makeText(UserLoginActivity.this, String.format("%s %s", getString(R.string.user_login_successful), user_name), Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 } else if (!(emailValidation() && userLoginEmail.equalsIgnoreCase(user_email))) {
@@ -63,12 +74,9 @@ public class UserLoginActivity extends AppCompatActivity {
         });
 
         // user create a new account
-        userCreateNewAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserLoginActivity.this, UserCreateAccountActivity.class);
-                startActivity(intent);
-            }
+        userCreateNewAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(UserLoginActivity.this, UserCreateAccountActivity.class);
+            startActivity(intent);
         });
     }
 
