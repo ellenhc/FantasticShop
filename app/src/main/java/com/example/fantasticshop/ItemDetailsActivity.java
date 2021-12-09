@@ -18,18 +18,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
     TextView item_name, item_description, item_price;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
 
-        item_image = findViewById(R.id.item_image_id);
-        item_name = findViewById(R.id.item_name_id);
-        item_description = findViewById(R.id.item_description_id);
-        item_price = findViewById(R.id.item_price_id);
-        item_star_icon = findViewById(R.id.unlike_id);
-        close = findViewById(R.id.close_id);
+        initViews();
 
         //retrieve data from the intent
         String image = getIntent().getStringExtra("image");
@@ -59,9 +53,16 @@ public class ItemDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void initViews() {
 
-
+        item_image = findViewById(R.id.item_image_id);
+        item_name = findViewById(R.id.item_name_id);
+        item_description = findViewById(R.id.item_description_id);
+        item_price = findViewById(R.id.item_price_id);
+        item_star_icon = findViewById(R.id.unlike_id);
+        close = findViewById(R.id.close_id);
 
     }
 }

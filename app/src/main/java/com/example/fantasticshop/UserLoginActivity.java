@@ -20,20 +20,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserLoginActivity extends AppCompatActivity {
-    private EditText userLoginEmail_input;
-    private EditText userLoginPassword_input;
-
+    private EditText userLoginEmail_input, userLoginPassword_input;
+    private Button userLoginBtn, userCreateNewAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        // Grab the view resources by id's for email & password inputs
-        userLoginEmail_input = findViewById(R.id.userLogin_email_input_id);
-        userLoginPassword_input = findViewById(R.id.userLogin_password_input_id);
-        Button userLoginBtn = findViewById(R.id.userLogin_btn_id);
-        Button userCreateNewAccount = findViewById(R.id.userLogin_createAccount_btn_id);
+        initViews();
 
         SharedPreferences sharedPreferences = getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE);
         String last_user_email = sharedPreferences.getString("lastEmail", null);
@@ -78,6 +73,14 @@ public class UserLoginActivity extends AppCompatActivity {
             Intent intent = new Intent(UserLoginActivity.this, UserCreateAccountActivity.class);
             startActivity(intent);
         });
+    }
+
+    private void initViews() {
+        // Grab the view resources by id's for email & password inputs
+        userLoginEmail_input = findViewById(R.id.userLogin_email_input_id);
+        userLoginPassword_input = findViewById(R.id.userLogin_password_input_id);
+        userLoginBtn = findViewById(R.id.userLogin_btn_id);
+        userCreateNewAccount = findViewById(R.id.userLogin_createAccount_btn_id);
     }
 
     public Boolean emailValidation(){
