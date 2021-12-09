@@ -30,14 +30,7 @@ public class UserAddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_add_item);
 
-        imageView = (ImageView)findViewById(R.id.add_image_id);
-        btn_upload = (Button)findViewById(R.id.btn_upload);
-        item_name = findViewById(R.id.item_name);
-        item_desc = findViewById(R.id.item_desc);
-        item_category = findViewById(R.id.item_category);
-        item_price = findViewById(R.id.item_price);
-        btn_save = findViewById(R.id.btn_save);
-        cancel_btn = findViewById(R.id.cancel_btn);
+        initViews();
 
         btn_upload.setOnClickListener(view -> openGallery());
 
@@ -93,5 +86,17 @@ public class UserAddItemActivity extends AppCompatActivity {
         String price = item_price.getText().toString().trim();
 
         return !name.isEmpty() && !price.isEmpty();
+    }
+
+    private void initViews() {
+
+        imageView = (ImageView)findViewById(R.id.add_image_id);
+        btn_upload = (Button)findViewById(R.id.btn_upload);
+        item_name = findViewById(R.id.item_name);
+        item_desc = findViewById(R.id.item_desc);
+        item_category = findViewById(R.id.item_category);
+        item_price = findViewById(R.id.item_price);
+        btn_save = findViewById(R.id.btn_save);
+        cancel_btn = findViewById(R.id.cancel_btn);
     }
 }
