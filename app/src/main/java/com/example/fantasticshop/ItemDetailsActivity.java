@@ -39,19 +39,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
         }
 
         //we now set the item
-
-        Glide.with(getApplicationContext()).load(Uri.parse(image)).into(item_image);
+        if (image != null) Glide.with(getApplicationContext()).load(Uri.parse(image)).into(item_image);
         item_name.setText(name);
         item_description.setText(desc);
-        item_price.setText(price);
+        item_price.setText(String.format("$%s", price));
 
-
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ItemDetailsActivity.this.finish();
-            }
-        });
 
     }
 
@@ -64,5 +56,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
         item_star_icon = findViewById(R.id.unlike_id);
         close = findViewById(R.id.close_id);
 
+        close.setOnClickListener(v -> ItemDetailsActivity.this.finish());
     }
 }

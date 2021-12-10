@@ -4,6 +4,7 @@ import static com.example.fantasticshop.SingletonClass.getMyInstance;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
@@ -62,17 +63,15 @@ public class ItemRepository{
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("ItemRepo", "Cancelled error");
             }
         });
-
     }
 
     // we now update the item on the database
     public void updateItem(HorizontalItems item){
         //we get the child from the database by it id and then set it
         myDataBaseRef.child(item.getId()).setValue(item);
-
     }
 
 

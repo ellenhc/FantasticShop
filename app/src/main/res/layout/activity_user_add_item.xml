@@ -76,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_category"
+        android:inputType="number"
         android:layout_marginTop="@dimen/default_margin"
         android:hint="Item price - $"
         android:singleLine="true" />

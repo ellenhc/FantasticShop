@@ -50,9 +50,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // we create an instance of the itemRepository
         ItemRepository repository = new ItemRepository();
 
-        Glide.with(context).load(Uri.parse(currentItem.getImageUrl())).into(holder.itemImage);
+        if(currentItem.getImageUrl() != null){
+            Glide.with(context).load(Uri.parse(currentItem.getImageUrl())).into(holder.itemImage);
+        }
         holder.itemName.setText(currentItem.getName());
-        holder.itemPrice.setText(currentItem.getPrice());
+        holder.itemPrice.setText(String.format("$%s", currentItem.getPrice()));
         holder.itemDesc.setText(currentItem.getDescription());
 
         //let us check if the item has been liked or not
@@ -71,22 +73,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         });
 
         // when a user click on an itemView
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ItemDetailsActivity.class);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ItemDetailsActivity.class);
 //                intent.putExtra("item_uri", Uri.parse(currentItem.getImageUrl()));
-                intent.putExtra("image", currentItem.getImageUrl());
-                intent.putExtra("name", currentItem.getName());
-                intent.putExtra("price", currentItem.getPrice());
-                intent.putExtra("desc", currentItem.getDescription());
-                intent.putExtra("liked", currentItem.getLiked());
+            intent.putExtra("image", currentItem.getImageUrl());
+            intent.putExtra("name", currentItem.getName());
+            intent.putExtra("price", currentItem.getPrice());
+            intent.putExtra("desc", currentItem.getDescription());
+            intent.putExtra("liked", currentItem.getLiked());
 
-                context.startActivity(intent);
-
-            }
+            context.startActivity(intent);
         });
-
     }
 
     @Override
